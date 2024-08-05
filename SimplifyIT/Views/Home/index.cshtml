@@ -7,7 +7,7 @@
                     <p class="lead text-white-50 mb-4">Займитесь действительно важными для вашего бизнеса делами, а техническую часть делегируйте нам!</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#services">Попробовать</a>
-                        <a class="btn btn-outline-light btn-lg px-4" href="#payg">Узнать больше</a>
+                        <a class="btn btn-outline-light btn-lg px-4" asp-controller="Home" asp-action="Services">Узнать больше</a>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                 <h2 class="h4 fw-bolder">Мониторинг инфраструктуры</h2>
                 <p>Отмониторим по полной программе все ваши ресурсы, оперативно создадим заявки на админов, если что-то повылетает из строя.</p>
-                <a class="text-decoration-none" href="#!">
+                <a class="text-decoration-none" href="#contactForm">
                     Оставить заявку
                     <i class="bi bi-arrow-right"></i>
                 </a>
@@ -32,7 +32,7 @@
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
                 <h2 class="h4 fw-bolder">Администрирование инфраструктуры</h2>
                 <p>Наша команда поможет справиться вам с этой техникой, которая вечно ломается и непонятно как работает.</p>
-                <a class="text-decoration-none" href="#!">
+                <a class="text-decoration-none" href="#contactForm">
                     Оставить заявку
                     <i class="bi bi-arrow-right"></i>
                 </a>
@@ -41,7 +41,7 @@
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
                 <h2 class="h4 fw-bolder">Поддержка рабочих мест</h2>
                 <p>Закончились чернила? Комп не подключается к сети или не работает монитор? Наши специалисты оперативно устранят неисправность.</p>
-                <a class="text-decoration-none" href="#!">
+                <a class="text-decoration-none" href="#contactForm">
                     Оставить заявку
                     <i class="bi bi-arrow-right"></i>
                 </a>
@@ -247,8 +247,8 @@
     <div class="container px-5 my-5 px-5">
         <div class="text-center mb-5">
             <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
-            <h2 class="fw-bolder">Get in touch</h2>
-            <p class="lead mb-0">We'd love to hear from you</p>
+            <h2 class="fw-bolder">Свяжитесь с нами</h2>
+            <p class="lead mb-0">Мы будем рады узнать, что вас интересует</p>
         </div>
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-6">
@@ -256,13 +256,13 @@
                     <!-- Name input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" id="name" type="text" placeholder="Введите ФИО..." />
-                        <label for="name">Имя</label>
+                        <label for="name">Имя*</label>
                         <div class="invalid-feedback">Введите ФИО.</div>
                     </div>
                     <!-- Email address input-->
                     <div class="form-floating mb-3">
                         <input class="form-control" id="email" type="email" placeholder="name@example.com" />
-                        <label for="email">Email</label>
+                        <label for="email">Email*</label>
                         <div class="invalid-feedback">Введите email.</div>
                         <div class="invalid-feedback">Email введен неверно.</div>
                     </div>
@@ -272,28 +272,44 @@
                         <label for="phone">Номер телефона</label>
                         <div class="invalid-feedback">Введите номер телефона.</div>
                     </div>
+                    <!-- Company input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="company" type="text" placeholder="Название компании" />
+                        <label for="company">Компания*</label>
+                        <div class="invalid-feedback">Введите название компании.</div>
+                    </div>
+                    <!-- Occupation input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="occupation" type="text" placeholder="Должность" />
+                        <label for="occupation">Должность</label>
+                        <div class="invalid-feedback">Введите название должности.</div>
+                    </div>
+                    <!-- Theme input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="theme" type="text" placeholder="Введите тему сообщения" />
+                        <label for="theme">Тема*</label>
+                        <div class="invalid-feedback">Введите тему сообщения.</div>
+                    </div>
                     <!-- Message input-->
                     <div class="form-floating mb-3">
                         <textarea class="form-control" id="message" type="text" placeholder="Введите ваше сообщение..." style="height: 10rem"></textarea>
                         <label for="message">Сообщение</label>
                         <div class="invalid-feedback">Введите сообщение.</div>
                     </div>
-                    <!-- Submit success message-->
-                    <!---->
-                    <!-- This is what your users will see when the form-->
-                    <!-- has successfully submitted-->
+                    
                     <div class="d-none" id="submitSuccessMessage">
                         <div class="text-center mb-3">
                             <div class="fw-bolder">Форма успешно отправлена!</div>
                         </div>
                     </div>
-                    <!-- Submit error message-->
-                    <!---->
-                    <!-- This is what your users will see when there is-->
-                    <!-- an error submitting the form-->
+                    
                     <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Ошибка при отправке формы!</div></div>
                     <!-- Submit Button-->
-                    <div class="d-grid"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Отправить</button></div>
+                    <div class="d-grid">
+                        <button class="btn btn-primary btn-lg" id="submitButton" type="submit">
+                            Отправить
+                        </button>
+                        </div>
                 </form>
             </div>
         </div>
