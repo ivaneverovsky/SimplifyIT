@@ -18,7 +18,27 @@ namespace SimplifyIT.Controllers
 			return View();
 		}
 
-		public IActionResult Privacy()
+		public IActionResult Contacts()
+		{
+			return View();
+		}
+
+		public IActionResult Career()
+		{
+			return View();
+		}
+
+		public IActionResult Projects()
+		{
+			return View();
+		}
+
+		public IActionResult Services()
+		{
+			return View();
+		}
+
+		public IActionResult About()
 		{
 			return View();
 		}
